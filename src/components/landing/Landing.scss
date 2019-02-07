@@ -1,0 +1,70 @@
+@import '../../index.scss';
+@import '../../styles/layout.scss';
+@import '../../styles/headings.scss';
+
+.landing {
+
+  @include full-section;
+  @include flex-center;
+
+  &__container {
+    @include container;
+  }
+
+  &__heading {
+    @include heading;
+    @include heading-primary;
+  }
+
+  &__cards {
+    @include row;
+    max-width: 65rem;
+    margin: 0 auto;
+  }
+
+  &__card {
+    @include column-2;
+    @include flex-center;
+    flex-direction: column;
+    height: 18rem;
+    color: white;
+    cursor: pointer;
+
+    &--food {
+      background: $color-primary;
+    }
+
+    &--water {
+      background: $color-secondary-light;
+    }
+
+    &--food:hover {
+      background: $color-primary-dark;
+    }
+
+    &--water:hover {
+      background: $color-secondary-dark; 
+    }
+
+    &:hover > .landing__card-icon,
+    &:hover > .landing__card-caption {
+      transform: scale(1.2);
+    }
+
+  }
+
+  &__card-icon {
+    font-size: 6rem;
+    margin-bottom: 0.5rem;
+    transform: scale (1);
+    transition: transform .5s ease;
+  }
+
+  &__card-caption {
+    font-size: 2.5rem;
+    font-weight: 300;
+    transform: scale (1);
+    transition: transform .5s ease;
+  }
+
+}

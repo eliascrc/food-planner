@@ -1,0 +1,49 @@
+{
+  "username": "",
+  "name": "",
+  "isLoggedIn": false,
+  "meals": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "water": {
+    "cupsDrank": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "daysInfo": [],
+  "mealTypes": [
+    "Breakfast",
+    "Lunch",
+    "Dinner"
+  ]
+}

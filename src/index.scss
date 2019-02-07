@@ -1,0 +1,52 @@
+$color-primary: #50c878;
+$color-primary-light: #a4dfb7;
+$color-primary-dark: rgb(85, 165, 86);
+
+$color-secondary: #247B7B;
+$color-secondary-dark: rgb(18, 118, 128);
+$color-secondary-light: #50858B;
+
+$color-black: #464545;
+$color-gray: #69747c;
+$color-red: crimson;
+
+$default-font-family: "Lato", sans-serif;
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $default-font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color-black;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+button {
+  background: transparent;
+  border: none;
+}

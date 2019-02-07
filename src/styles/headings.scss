@@ -1,0 +1,15 @@
+@mixin heading {
+  font-weight: 300;
+  text-align: center;
+}
+
+@mixin heading-primary {
+  font-size: 3.25rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+@mixin heading-secondary {
+  font-size: 2.18rem;
+  margin-bottom: 1.25rem;
+}

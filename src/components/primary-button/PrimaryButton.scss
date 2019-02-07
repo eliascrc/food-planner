@@ -1,0 +1,21 @@
+@import './../../index.scss';
+
+.primary-button {
+
+  background: white;
+  border: 2px solid $color-primary;
+  font-size: 1.15rem;
+  color: $color-primary;
+  padding: 0.3rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color .5s ease, color .5s ease, border .5s ease;
+  font-family: $default-font-family;
+
+  &:hover {
+    background: $color-primary;
+    color: white;
+    border: 1px solid white;
+  }
+
+}

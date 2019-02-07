@@ -1,0 +1,95 @@
+@import '../../index.scss';
+@import '../../styles/layout.scss';
+@import '../../styles/headings.scss';
+
+.food {
+  @include full-section;
+  @include flex-center;
+
+  &__container {
+    @include container;
+    @include flex-center;
+    flex-wrap: wrap;
+  }
+
+  &__column {
+    flex-basis: 50%;
+    flex-direction: column;
+  }
+
+  &__heading {
+    @include heading;
+    @include heading-primary;
+  }
+
+  &__navbar {
+    width: 100%;
+    @include flex-center;
+    margin-bottom: 2rem;
+  }
+
+  &__nav-items {
+    @include flex-center;
+  }
+
+  &__nav-item {
+    margin: 0 0.2rem;
+  }
+
+  &__nav-link {
+    border: 2px solid $color-primary;
+    padding: 0.5rem 2rem;
+    border-radius: 0.4rem;
+    color: $color-primary;
+    transition: background-color .5s ease, color .5s ease;
+  }
+
+  &__nav-link:hover {
+    background: $color-primary;
+    color: white;
+  }
+
+  &__nav-reset {
+    border: 2px solid $color-red;
+    padding: 0.5rem 2rem;
+    border-radius: 0.4rem;
+    font-size: 0.95rem;
+    color: $color-red;
+    cursor: pointer;
+    transition: background-color .5s ease, color .5s ease;
+  }
+
+  &__nav-reset:hover {
+    background: $color-red;
+    color: white;
+  }
+
+  &__dates {
+    @include flex-center;
+    flex-direction: column;
+  }
+
+  &__date {
+    border: 2px solid $color-secondary;
+    border-bottom: none;
+    color: $color-secondary;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.5rem 8rem;
+    cursor: pointer;
+    font-family: $default-font-family;
+    transition: background-color .5s ease, color .5s ease;
+  }
+
+  &__date:hover,
+  &__selected-date {
+    background: $color-secondary;
+    color: white;
+    outline: none;
+  }
+
+  &__date:last-child {
+    border-bottom: 2px solid $color-secondary;
+  }
+
+}

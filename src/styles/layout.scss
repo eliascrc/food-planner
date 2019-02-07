@@ -1,0 +1,36 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin container {
+  max-width: 75rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@mixin full-section {
+  display: flex;
+  align-items: center;
+  padding: 6rem 0 4rem;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+@mixin column-2 {
+  flex-basis: 50%;
+}
+
+@mixin column-3 {
+  flex-basis: 33.3333%;
+}
+
+@mixin column-5 {
+  flex-basis: 14%;
+}
