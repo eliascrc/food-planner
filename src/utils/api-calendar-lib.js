@@ -34,7 +34,6 @@ export function createEvent(ApiCalendar, meal, typeIndex, dayIndex, daysInfo, su
   event.start.dateTime = `${formatDateGoogle(daysInfo[dayIndex])}T${meal.time}:00-06:00`;
   event.end.dateTime = `${formatDateGoogle(daysInfo[dayIndex])}T${increaseOneHour(meal.time)}:00-06:00`;
 
-  console.log(event);
   ApiCalendar.createEvent(event)
     .then((result) => {
       success(result);
@@ -52,7 +51,6 @@ export function createWaterEvent(ApiCalendar, time, success, error) {
   event.start.dateTime = `${formatDateGoogle(dayjs())}T${time}:00-06:00`;
   event.end.dateTime = `${formatDateGoogle(dayjs())}T${time}:00-06:00`;
 
-  console.log(event);
   ApiCalendar.createEvent(event)
     .then((result) => {
       success(result);
