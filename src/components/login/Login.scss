@@ -1,6 +1,8 @@
 @import '../../index.scss';
 @import '../../styles/layout.scss';
 @import '../../styles/headings.scss';
+@import '../../styles/separators.scss';
+@import '../../styles/buttons.scss';
 
 .login {
 
@@ -10,7 +12,7 @@
   padding: 0;
 
   &__wrapper {
-    background: white;
+    background: $color-white;
     padding: 3rem 4rem;
     @include flex-center;
     flex-direction: column;
@@ -33,7 +35,7 @@
   }
 
   &__brand {
-    color: white;
+    color: $color-white;
     font-size: 3.8rem;
     font-weight: 300;
     cursor: default;
@@ -51,10 +53,7 @@
   }
 
   &__separator {
-    border: none;
-    border-top: 1px solid $color-primary;
-    margin-bottom: 2rem;
-    width: 100%;
+    @include separator-primary
   }
 
   &__welcome {
@@ -63,33 +62,15 @@
   }
 
   &__button {
-    cursor: pointer;
-    border: 2px solid $color-primary;
+    @include button;
+    @include button-primary;
     padding: 1rem 1rem;
     width: 100%;
-    border-radius: 0.4rem;
     font-size: 1.1rem;
-    font-family: 'Lato', sans-serif;
     font-weight: 300;
-    text-align: center;
-    transition: background-color .5s ease, color .5s ease;
   }
 
-  &__button:hover {
-    background: $color-primary;
-    color: white;
-  }
-
-  &__button:disabled {
-    background: rgb(221, 221, 221);
-    border: 2px solid white;
-    color: white;
-  }
-
-  &__button:disabled > &__google-icon {
-    color: white;
-  }
-
+  &__button:disabled > &__google-icon,
   &__button:hover > &__google-icon {
     color: white;
   }

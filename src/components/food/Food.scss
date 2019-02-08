@@ -1,6 +1,7 @@
 @import '../../index.scss';
 @import '../../styles/layout.scss';
 @import '../../styles/headings.scss';
+@import '../../styles/buttons.scss';
 
 .food {
   @include full-section;
@@ -24,11 +25,18 @@
   &__heading {
     @include heading;
     @include heading-primary;
+    margin-bottom: 2rem;
+  }
+
+  &__alarm-error {
+    color: $color-red;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   &__navbar {
-    width: 100%;
     @include flex-center;
+    width: 100%;
     margin-bottom: 2rem;
   }
 
@@ -46,40 +54,26 @@
     @media only screen and (max-width: $bp-sm) {
       margin: 0 0.2rem 0.4rem;
     }
-  }
-
-  &__nav-item:not(:last-child) {
-    @media only screen and (max-width: $bp-sm) {
-      padding: 0.7rem 0;
+    
+    &:not(:last-child) {
+      @media only screen and (max-width: $bp-sm) {
+        padding: 0.7rem 0;
+      }
     }
   }
 
   &__nav-link {
-    border: 2px solid $color-primary;
-    padding: 0.5rem 2rem;
-    border-radius: 0.4rem;
+    @include button;
+    @include button-primary;
     color: $color-primary;
-    transition: background-color .5s ease, color .5s ease;
-  }
-
-  &__nav-link:hover {
-    background: $color-primary;
-    color: white;
+    padding: 0.5rem 2rem;
   }
 
   &__nav-reset {
-    border: 2px solid $color-red;
+    @include button;
+    @include button-danger;
     padding: 0.5rem 2rem;
-    border-radius: 0.4rem;
     font-size: 0.95rem;
-    color: $color-red;
-    cursor: pointer;
-    transition: background-color .5s ease, color .5s ease;
-  }
-
-  &__nav-reset:hover {
-    background: $color-red;
-    color: white;
   }
 
   &__dates {
@@ -88,15 +82,17 @@
   }
 
   &__date {
+    @include button;
+    border-radius: 0;
     border: 2px solid $color-secondary;
     border-bottom: none;
     color: $color-secondary;
-    text-align: center;
     font-size: 1.2rem;
     padding: 0.5rem 8rem;
-    cursor: pointer;
-    font-family: $default-font-family;
-    transition: background-color .5s ease, color .5s ease;
+
+    &:last-child {
+      border-bottom: 2px solid $color-secondary;
+    }
 
     @media only screen and (max-width: $bp-sm) {
       padding: 0.5rem 3rem;
@@ -108,10 +104,6 @@
     background: $color-secondary;
     color: white;
     outline: none;
-  }
-
-  &__date:last-child {
-    border-bottom: 2px solid $color-secondary;
   }
 
 }

@@ -6,6 +6,7 @@ export const DELETE_MEAL = 'DELETE_MEAL';
 export const EDIT_MEAL = 'EDIT_MEAL';
 export const RESET_CALENDAR = 'RESET_CALENDAR';
 export const UPDATE_CUP = 'UPDATE_CUP';
+export const RESTART_WATER = 'RESTART_WATER';
 
 /* Action methods */
 export function newLogin(username, name) {
@@ -34,4 +35,8 @@ export function resetCalendar() {
 
 export function updateCup(updatedCup, index) {
   return { type: UPDATE_CUP , updatedCup, index };
+}
+
+export function restartWater() {
+  return { type: RESTART_WATER };
 }

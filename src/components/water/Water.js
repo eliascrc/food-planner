@@ -43,7 +43,7 @@ export default class Water extends Component {
   }
 
   render() {
-    const { isLoggedIn, water, handleCupClick } = this.props;
+    const { isLoggedIn, water, handleCupClick, handleRestartWater } = this.props;
     const { time, message } = this.state;
     if (!isLoggedIn) {
       return <Redirect to="/login" />;
@@ -54,6 +54,7 @@ export default class Water extends Component {
         <h1 className="water__heading">Water</h1>
 
         <div className="water__container">
+          <button onClick={(e) => handleRestartWater(e)}>Restart!</button>
           <div className="water__cups">
             {water.cupsDrank.map((cupDrank, index) => (
               <div className="water__cup">
@@ -64,7 +65,9 @@ export default class Water extends Component {
                     <img className="water__cup-icon" src={require('../../assets/water-bottle-drank.png')} alt="Water Drank" /> :
                     <img className="water__cup-icon" src={require('../../assets/water-bottle-full.png')} alt="Water Bottle" />}
                 </button>
-                <p className="water__cup-caption">Bottle #{index + 1}</p>
+                <p className="water__cup-caption">
+                  {cupDrank ? "Nice!" : `Bottle #${index + 1}`}
+                </p>
               </div>
             ))}
           </div>

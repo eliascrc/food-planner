@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-import CalendarItem from '../calendar-item/CalendarItem';
 import './Calendar.scss';
+import CalendarItem from '../calendar-item/CalendarItem';
+import PropTypes from 'prop-types';
 
 class Calendar extends Component {
 
+  /**
+   * Creates a column with Breakfast, Lunch and Dinner.
+   * 
+   * @returns list with the existing meals.
+   */
   getColumnForDay = (dayIndex) => {
-    const { meals, mealTypes, enableGoogle, handleDoneClick, handleDeleteClick, handleAlarmClick } = this.props;
+    const { meals, enableGoogle, handleDoneClick, handleDeleteClick, handleAlarmClick } = this.props;
     const calendarItemsList = [];
 
     for (let index = 0; index < meals.length; index++) {
       const mealTime = meals[index];
       const meal = mealTime[dayIndex];
 
-      if (meal) {
+      if (meal) { // If the meal exists create a list item
         calendarItemsList.push(
           <CalendarItem
-            title={mealTypes[index]}
             description={meal.description}
             done={meal.done}
             alarmSet={meal.alarmSet}
@@ -57,10 +62,18 @@ class Calendar extends Component {
   }
 }
 
+Calendar.propTypes = {
+  daysInfo: PropTypes.array.isRequired,
+  meals: PropTypes.array.isRequired, 
+  enableGoogle: PropTypes.bool.isRequired, 
+  handleDoneClick: PropTypes.func.isRequired,
+  handleDeleteClick: PropTypes.func.isRequired, 
+  handleAlarmClick: PropTypes.func.isRequired
+}
+
 const mapStateToProps = state => ({
   daysInfo: state.daysInfo,
-  meals: state.meals,
-  mealTypes: state.mealTypes
+  meals: state.meals
 });
 
 const mapDispatchToProps = dispatch => ({
