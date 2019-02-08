@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import TimeField from 'react-simple-timefield';
+import uuid from 'uuid';
 
 import './Water.scss';
 import { createWaterEvent } from '../../utils/api-calendar-lib';
@@ -43,7 +44,7 @@ export default class Water extends Component {
   }
 
   render() {
-    const { isLoggedIn, water, handleCupClick } = this.props;
+    const { isLoggedIn, water, handleCupClick, handleRestartWater } = this.props;
     const { time, message } = this.state;
     if (!isLoggedIn) {
       return <Redirect to="/login" />;
@@ -54,9 +55,16 @@ export default class Water extends Component {
         <h1 className="water__heading">Water</h1>
 
         <div className="water__container">
+          <div className="water__restart-button">
+            <PrimaryButton
+              disabled={false}
+              handleClick={(e) => handleRestartWater(e)}
+              text="Restart the bottles!"
+            />
+          </div>
           <div className="water__cups">
             {water.cupsDrank.map((cupDrank, index) => (
-              <div className="water__cup">
+              <div className="water__cup" key={uuid()}>
                 <button
                   className="water__cup-button"
                   onClick={(e) => handleCupClick(e, index)}>
@@ -64,7 +72,9 @@ export default class Water extends Component {
                     <img className="water__cup-icon" src={require('../../assets/water-bottle-drank.png')} alt="Water Drank" /> :
                     <img className="water__cup-icon" src={require('../../assets/water-bottle-full.png')} alt="Water Bottle" />}
                 </button>
-                <p className="water__cup-caption">Bottle #{index + 1}</p>
+                <p className="water__cup-caption">
+                  {cupDrank ? "Nice!" : `Bottle #${index + 1}`}
+                </p>
               </div>
             ))}
           </div>
@@ -85,9 +95,9 @@ export default class Water extends Component {
               onClick={() => { }}
               text="Set an Alarm!"
             />
-          </form>
 
-          <p>{message}</p>
+            <p className="water__reminder-msg">{message}</p>
+          </form>
 
         </div>
       </section>

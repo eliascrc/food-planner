@@ -2,8 +2,8 @@ import React from 'react';
 
 import './PrimaryButton.scss';
 
-const PrimaryButton = ({ text, handleLogout, disabled }) => (
-  <button disabled={disabled} onClick={handleLogout} className="primary-button">
+const PrimaryButton = ({ text, handleClick, disabled }) => (
+  <button disabled={disabled} onClick={handleClick} className="primary-button">
     {text}
   </button>
 );

@@ -4,10 +4,10 @@ import * as Redux from 'redux';
 import * as ReactRedux from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
 
+import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { reducer } from './redux/reducer';
-import './index.scss';
 
 let store = Redux.createStore(reducer);
 

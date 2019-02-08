@@ -40,10 +40,5 @@
       false
     ]
   },
-  "daysInfo": [],
-  "mealTypes": [
-    "Breakfast",
-    "Lunch",
-    "Dinner"
-  ]
+  "daysInfo": []
 }

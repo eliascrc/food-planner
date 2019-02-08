@@ -1,4 +1,4 @@
-import { NEW_LOGIN, LOGOUT, ADD_MEAL, DELETE_MEAL, EDIT_MEAL, RESET_CALENDAR, UPDATE_CUP } from './actions';
+import { NEW_LOGIN, LOGOUT, ADD_MEAL, DELETE_MEAL, EDIT_MEAL, RESET_CALENDAR, UPDATE_CUP, RESTART_WATER } from './actions';
 import { getDaysOfTheWeek, getParsedDayJS } from '../utils/commons';
 import INITIAL_STATE from './initial-state.json';
 
@@ -11,16 +11,15 @@ function getLocalStorage() {
 }
 
 export function reducer(state = INITIAL_STATE, action) {
-  let newState;
-  let localState;
-  let newMeals;
+  let newState, localState, newMeals, newCupsDrank, newWater;
 
   switch (action.type) {
     case NEW_LOGIN:
       if (state.username === action.username) {
         newState = { ...state, isLoggedIn: true };
       } else {
-        newState = { ...INITIAL_STATE, isLoggedIn: true, name: action.name, username: action.username, daysInfo: getDaysOfTheWeek() }
+        newState = { ...INITIAL_STATE, isLoggedIn: true, name: action.name, username: action.username, 
+          daysInfo: getDaysOfTheWeek() }
       }
 
       updateLocalStorage(newState);
@@ -29,7 +28,7 @@ export function reducer(state = INITIAL_STATE, action) {
     case LOGOUT:
       newState = { ...state, isLoggedIn: false };
       updateLocalStorage(newState);
-      
+
       return newState;
 
     case ADD_MEAL:
@@ -67,9 +66,18 @@ export function reducer(state = INITIAL_STATE, action) {
       return newState;
 
     case UPDATE_CUP:
-      let newWater = { ...state.water }; 
-      let newCupsDrank = [...state.water.cupsDrank];
+      newWater = { ...state.water };
+      newCupsDrank = [...state.water.cupsDrank];
       newCupsDrank[action.index] = action.updatedCup;
+      newWater.cupsDrank = newCupsDrank;
+      newState = { ...state, water: newWater };
+      updateLocalStorage(newState);
+
+      return newState;
+
+    case RESTART_WATER:
+      newWater = { ...state.water };
+      newCupsDrank = [ false, false, false, false, false ];
       newWater.cupsDrank = newCupsDrank;
       newState = { ...state, water: newWater };
       updateLocalStorage(newState);

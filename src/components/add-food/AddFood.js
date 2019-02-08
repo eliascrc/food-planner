@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TimeField from 'react-simple-timefield';
 
-import { formatDateDMY, isStringEmpty } from '../../utils/commons';
 import './AddFood.scss';
+import { formatDateDMY, isStringEmpty } from '../../utils/commons';
 import PrimaryButton from '../primary-button/PrimaryButton';
+import { MEAL_TYPES } from '../../utils/constants';
 
 export default class AddFood extends Component {
 
@@ -12,9 +13,6 @@ export default class AddFood extends Component {
     super(props);
 
     this.state = {
-      availableTypes: [
-        'Breakfast', 'Lunch', 'Dinner',
-      ],
       daySelected: 0,
       typeSelected: 0,
       description: '',
@@ -59,7 +57,7 @@ export default class AddFood extends Component {
   }
 
   render() {
-    const { availableTypes, daySelected, typeSelected, description, time, goToCalendar } = this.state;
+    const { daySelected, typeSelected, description, time, goToCalendar } = this.state;
     const { daysInfo } = this.props;
 
     if (goToCalendar) {
@@ -83,7 +81,7 @@ export default class AddFood extends Component {
         <label>
           <p className="add-food__label">Type</p>
           <select className="add-food__input" value={typeSelected} onChange={(e) => this.handleChange(e, 'TYPE')}>
-            {availableTypes.map((type, index) => (
+            {MEAL_TYPES.map((type, index) => (
               <option value={index} key={index}>{type}</option>
             ))}
           </select>
@@ -106,7 +104,7 @@ export default class AddFood extends Component {
 
         <PrimaryButton 
           disabled={isStringEmpty(description)}
-          onClick={() => {}}
+          handleClick={() => {}}
           text="Submit"
         />
       </form>

@@ -1,0 +1,33 @@
+@mixin button {
+  cursor: pointer;
+  border-radius: 0.4rem;
+  font-family: $default-font-family, sans-serif;
+  text-align: center;
+  transition: background-color .5s ease, color .5s ease;
+
+  &:disabled {
+    background: $color-gray;
+    border: 2px solid white;
+    color: white;
+  }
+}
+
+@mixin button-primary {
+  border: 2px solid $color-primary;
+  color: $color-primary;
+
+  &:hover {
+    background: $color-primary;
+    color: white;
+  }
+}
+
+@mixin button-danger {
+  border: 2px solid $color-red;
+  color: $color-red;
+
+  &:hover {
+    background: $color-red;
+    color: white;
+  }
+}

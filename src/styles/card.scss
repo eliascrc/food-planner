@@ -1,0 +1,29 @@
+@mixin card-modifiers {
+  &--food {
+    background: $color-primary;
+  }
+
+  &--water {
+    background: $color-secondary-light;
+  }
+
+  &--food:hover {
+    background: $color-primary-dark;
+  }
+
+  &--water:hover {
+    background: $color-secondary-dark; 
+  }
+}
+
+@mixin card-animations {
+  &:hover > .landing__card-icon,
+  &:hover > .landing__card-caption {
+    transform: scale(1.2);
+  }
+}
+
+@mixin card-scale {
+  transform: scale (1);
+  transition: transform .5s ease;
+}

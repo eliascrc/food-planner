@@ -5,6 +5,7 @@
 .water {
 
   @include full-section;
+  padding-bottom: 2rem;
 
   &__container {
     @include container;
@@ -13,7 +14,12 @@
   &__heading {
     @include heading;
     @include heading-primary;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  &__restart-button {
+    @include flex-center;
+    margin-bottom: 1rem;
   }
 
   &__cups {
@@ -87,6 +93,12 @@
       margin-top: 1rem;
       margin-left: 0;
     }
+  }
+
+  &__reminder-msg {
+    color: $color-primary;
+    font-weight: bold;
+    margin-top: 0.4rem;
   }
 
 }
