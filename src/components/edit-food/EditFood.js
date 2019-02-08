@@ -12,13 +12,11 @@ export default class EditFood extends Component {
     super(props);
 
     this.state = {
-      availableTypes: [
-        'Breakfast', 'Lunch', 'Dinner',
-      ],
       daySelected: 0,
       typeSelected: 0,
       description: '',
       time: '',
+      prevTime: '',
       done: false,
       alarmSet: false,
       goToCalendar: false,
@@ -27,12 +25,12 @@ export default class EditFood extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { daySelected, typeSelected, description, time, done, alarmSet } = this.state;
+    const { daySelected, typeSelected, description, time, prevTime, done, alarmSet } = this.state;
     const { onEditMeal } = this.props;
     const updatedCalendarItem = {
       description,
       done,
-      alarmSet,
+      alarmSet: (prevTime === time)? alarmSet : false,
       time,
     }
 
@@ -66,7 +64,7 @@ export default class EditFood extends Component {
       const { params } = match;
       const { description, done, alarmSet, time } = meals[params.type][params.dayIndex];
       this.setState({
-        description, done, alarmSet, time,
+        description, done, alarmSet, time, prevTime: time,
         typeSelected: params.type, daySelected: params.dayIndex
       });
     } catch (err) {
@@ -106,7 +104,7 @@ export default class EditFood extends Component {
 
         <PrimaryButton 
           disabled={isStringEmpty(description)}
-          onClick={() => {}}
+          handleClick={() => {}}
           text="Submit"
         />
       </form>

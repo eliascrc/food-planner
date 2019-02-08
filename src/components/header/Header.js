@@ -26,7 +26,7 @@ const Header = ({ user, enableAuth, handleLogout }) => (
           <PrimaryButton
             text="Logout"
             disabled={!enableAuth}
-            handleLogout={handleLogout}
+            handleClick={handleLogout}
           />
         </div>
       </div>

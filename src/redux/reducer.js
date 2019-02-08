@@ -18,7 +18,8 @@ export function reducer(state = INITIAL_STATE, action) {
       if (state.username === action.username) {
         newState = { ...state, isLoggedIn: true };
       } else {
-        newState = { ...INITIAL_STATE, isLoggedIn: true, name: action.name, username: action.username, daysInfo: getDaysOfTheWeek() }
+        newState = { ...INITIAL_STATE, isLoggedIn: true, name: action.name, username: action.username, 
+          daysInfo: getDaysOfTheWeek() }
       }
 
       updateLocalStorage(newState);

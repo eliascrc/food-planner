@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import TimeField from 'react-simple-timefield';
+import uuid from 'uuid';
 
 import './Water.scss';
 import { createWaterEvent } from '../../utils/api-calendar-lib';
@@ -54,10 +55,16 @@ export default class Water extends Component {
         <h1 className="water__heading">Water</h1>
 
         <div className="water__container">
-          <button onClick={(e) => handleRestartWater(e)}>Restart!</button>
+          <div className="water__restart-button">
+            <PrimaryButton
+              disabled={false}
+              handleClick={(e) => handleRestartWater(e)}
+              text="Restart the bottles!"
+            />
+          </div>
           <div className="water__cups">
             {water.cupsDrank.map((cupDrank, index) => (
-              <div className="water__cup">
+              <div className="water__cup" key={uuid()}>
                 <button
                   className="water__cup-button"
                   onClick={(e) => handleCupClick(e, index)}>
@@ -88,9 +95,9 @@ export default class Water extends Component {
               onClick={() => { }}
               text="Set an Alarm!"
             />
-          </form>
 
-          <p>{message}</p>
+            <p className="water__reminder-msg">{message}</p>
+          </form>
 
         </div>
       </section>
