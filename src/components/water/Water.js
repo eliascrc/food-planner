@@ -27,7 +27,7 @@ export default class Water extends Component {
 
     const { ApiCalendar, enableGoogle } = this.props;
     const { time } = this.state;
-    console.log(time);
+    
     if (enableGoogle) {
       createWaterEvent(ApiCalendar, time,
         () => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TimeField from 'react-simple-timefield';
+import uuid from 'uuid';
 
 import './AddFood.scss';
 import { formatDateDMY, isStringEmpty } from '../../utils/commons';
@@ -73,7 +74,7 @@ export default class AddFood extends Component {
           <p className="add-food__label">Day</p>
           <select className="add-food__input" value={daySelected} onChange={(e) => this.handleChange(e, 'DATE')}>
             {daysInfo.map((day, index) => (
-              <option value={index} key={index}>{formatDateDMY(day)}</option>
+              <option value={index} key={uuid()}>{formatDateDMY(day)}</option>
             ))}
           </select>
         </label>
@@ -82,7 +83,7 @@ export default class AddFood extends Component {
           <p className="add-food__label">Type</p>
           <select className="add-food__input" value={typeSelected} onChange={(e) => this.handleChange(e, 'TYPE')}>
             {MEAL_TYPES.map((type, index) => (
-              <option value={index} key={index}>{type}</option>
+              <option value={index} key={uuid()}>{type}</option>
             ))}
           </select>
         </label>
