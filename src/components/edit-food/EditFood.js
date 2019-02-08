@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import TimeField from 'react-simple-timefield';
 
 import './EditFood.scss';
+import PrimaryButton from '../primary-button/PrimaryButton';
+import { isStringEmpty } from '../../utils/commons';
 
 export default class EditFood extends Component {
 
@@ -80,23 +82,33 @@ export default class EditFood extends Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Edit Food</h2>
+      <form className="edit-food" onSubmit={this.handleSubmit}>
+        <h2 className="edit-food__heading">Edit Food</h2>
+        <hr className="edit-food__separator" />
 
         <label>
-          Description:
-          <textarea value={description} onChange={(e) => this.handleChange(e, 'DESCRIPTION')} />
+          <p className="edit-food__label">Description:</p>
+          <textarea
+            className="edit-food__input edit-food__input--text-area"
+            value={description}
+            onChange={(e) => this.handleChange(e, 'DESCRIPTION')} />
         </label>
 
         <label>
-          Time:
-          <TimeField
-            value={time}
-            onChange={(value) => this.handleChange(value, 'TIME')}
-          />
+          <p className="edit-food__label">Time:</p>
+          <div className="edit-food__input--time">
+            <TimeField
+              value={time}
+              onChange={(value) => this.handleChange(value, 'TIME')}
+            />
+          </div>
         </label>
 
-        <button>Submit</button>
+        <PrimaryButton 
+          disabled={isStringEmpty(description)}
+          onClick={() => {}}
+          text="Submit"
+        />
       </form>
     )
   }

@@ -46,9 +46,10 @@ class Food extends Component {
     if (!selectedMeal.alarmSet && enableGoogle) {
       createEvent(ApiCalendar, selectedMeal, typeIndex, dayIndex, daysInfo,
         (result) => {
+          debugger
           const newMeal = { ...selectedMeal };
           newMeal.alarmSet = true;
-          onAddMeal(selectedMeal, dayIndex, typeIndex);
+          onAddMeal(newMeal, dayIndex, typeIndex);
         },
         (error) => {
           console.log(error);

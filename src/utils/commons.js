@@ -22,3 +22,7 @@ export function formatDateGoogle(date) {
 export function getParsedDayJS(stringDate) {
   return dayjs(stringDate);
 }
+
+export function isStringEmpty (string) {
+  return (!string || /^\s*$/.test(string));
+}

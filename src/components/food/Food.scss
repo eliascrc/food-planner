@@ -15,6 +15,10 @@
   &__column {
     flex-basis: 50%;
     flex-direction: column;
+
+    @media only screen and (max-width: $bp-lg) {
+      flex-basis: 100%;
+    }
   }
 
   &__heading {
@@ -30,10 +34,24 @@
 
   &__nav-items {
     @include flex-center;
+
+    @media only screen and (max-width: $bp-sm) {
+      flex-direction: column;
+    }
   }
 
   &__nav-item {
     margin: 0 0.2rem;
+
+    @media only screen and (max-width: $bp-sm) {
+      margin: 0 0.2rem 0.4rem;
+    }
+  }
+
+  &__nav-item:not(:last-child) {
+    @media only screen and (max-width: $bp-sm) {
+      padding: 0.7rem 0;
+    }
   }
 
   &__nav-link {
@@ -79,6 +97,10 @@
     cursor: pointer;
     font-family: $default-font-family;
     transition: background-color .5s ease, color .5s ease;
+
+    @media only screen and (max-width: $bp-sm) {
+      padding: 0.5rem 3rem;
+    }
   }
 
   &__date:hover,

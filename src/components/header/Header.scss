@@ -5,18 +5,29 @@
   position: fixed;
   width: 100%;
   background: $color-primary;
-  height: 4rem;
+  min-height: 4rem;
   color: white;
 
   &__container {
     @include container;
     @include flex-center;
     @include row;
-    height: 100%;
+    min-height: 4rem;
+    padding: 0.4rem 0;
   }
 
   &__column {
     @include column-3;
+
+    @media only screen and (max-width: $bp-sm) {
+      flex-basis: 50%;
+    }
+  }
+
+  &__column:first-child {
+    @media only screen and (max-width: $bp-sm) {
+      flex-basis: 0%;
+    }
   }
 
   &__icon-rotated {
@@ -35,12 +46,29 @@
     text-align: center;
     display: block;
     color: white;
+
+    @media only screen and (max-width: $bp-md) {
+      font-size: 1.5rem;
+    }
+
+    @media only screen and (max-width: $bp-sm) {
+      font-size: 1.1rem;
+      padding-left: 1rem;
+    }
   }
 
   &__user-info {
     justify-self: flex-end;
     text-align: left;
     margin-left: 1rem;
+
+    @media only screen and (max-width: $bp-md) {
+      width: 8rem;
+    }
+
+    @media only screen and (max-width: $bp-sm) {
+      display: none;
+    }
   }
 
 }

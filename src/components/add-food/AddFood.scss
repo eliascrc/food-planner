@@ -1,0 +1,57 @@
+@import '../../index.scss';
+@import '../../styles/layout.scss';
+@import '../../styles/headings.scss';
+
+.add-food {
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+
+  @media only screen and (max-width: $bp-lg) {
+    margin-top: 2rem;
+  }
+
+  &__heading {
+    @include heading;    
+    @include heading-secondary;
+    margin-bottom: 0rem;
+  }
+
+  &__separator {
+    border: none;
+    border-top: 1px solid $color-primary;
+    margin-bottom: 2rem;
+    width: 90%;
+  }
+
+  &__label {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+  }
+
+  &__input,
+  &__input--time > input {
+    padding: 0.3rem 1rem;
+    font-family: $default-font-family;
+    font-size: 1rem;
+    border: 1px solid $color-primary;
+    margin-bottom: 1rem;
+  }
+
+  &__input--time > input {
+    font-size: 1.2rem;
+    width: 6rem !important;
+    text-align: center;
+  }
+
+  &__input--text-area {
+    resize: none;
+    width: 25rem;
+    height: 6rem;
+
+    @media only screen and (max-width: $bp-sm) {
+      width: 100%;
+    }
+  }
+}

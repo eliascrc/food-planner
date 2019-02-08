@@ -15,7 +15,13 @@
   &:hover {
     background: $color-primary;
     color: white;
-    border: 1px solid white;
+    border: 2px solid white;
+  }
+
+  &:disabled {
+    background: $color-gray;
+    color: #ddd;
+    border: 2px solid white;
   }
 
 }

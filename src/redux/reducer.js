@@ -33,7 +33,6 @@ export function reducer(state = INITIAL_STATE, action) {
       return newState;
 
     case ADD_MEAL:
-    debugger
       newMeals = [...state.meals];
       newMeals[action.typeSelected][action.daySelected] = action.newMeal;
       newState = { ...state, meals: newMeals };
@@ -68,7 +67,6 @@ export function reducer(state = INITIAL_STATE, action) {
       return newState;
 
     case UPDATE_CUP:
-    debugger
       let newWater = { ...state.water }; 
       let newCupsDrank = [...state.water.cupsDrank];
       newCupsDrank[action.index] = action.updatedCup;

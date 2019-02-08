@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TimeField from 'react-simple-timefield';
 
-import { formatDateDMY } from '../../utils/commons';
+import { formatDateDMY, isStringEmpty } from '../../utils/commons';
 import './AddFood.scss';
+import PrimaryButton from '../primary-button/PrimaryButton';
 
 export default class AddFood extends Component {
 
@@ -17,7 +18,7 @@ export default class AddFood extends Component {
       daySelected: 0,
       typeSelected: 0,
       description: '',
-      time: '',
+      time: '12:00',
       goToCalendar: false,
     }
   }
@@ -39,7 +40,7 @@ export default class AddFood extends Component {
 
   handleChange = (e, key) => {
 
-    switch(key) {
+    switch (key) {
       case 'DATE':
         this.setState({ daySelected: e.target.value });
         break;
@@ -66,12 +67,13 @@ export default class AddFood extends Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Add Food</h2>
+      <form className="add-food" onSubmit={this.handleSubmit}>
+        <h2 className="add-food__heading">Add Food</h2>
+        <hr className="add-food__separator" />
 
         <label>
-          Day:
-          <select value={daySelected} onChange={(e) => this.handleChange(e, 'DATE')}>
+          <p className="add-food__label">Day</p>
+          <select className="add-food__input" value={daySelected} onChange={(e) => this.handleChange(e, 'DATE')}>
             {daysInfo.map((day, index) => (
               <option value={index} key={index}>{formatDateDMY(day)}</option>
             ))}
@@ -79,8 +81,8 @@ export default class AddFood extends Component {
         </label>
 
         <label>
-          Type:
-          <select value={typeSelected} onChange={(e) => this.handleChange(e, 'TYPE')}>
+          <p className="add-food__label">Type</p>
+          <select className="add-food__input" value={typeSelected} onChange={(e) => this.handleChange(e, 'TYPE')}>
             {availableTypes.map((type, index) => (
               <option value={index} key={index}>{type}</option>
             ))}
@@ -88,19 +90,25 @@ export default class AddFood extends Component {
         </label>
 
         <label>
-          Description:
-          <textarea value={description} onChange={(e) => this.handleChange(e, 'DESCRIPTION')}/>
+          <p className="add-food__label">What are you going to eat?</p>
+          <textarea className="add-food__input add-food__input--text-area" value={description} onChange={(e) => this.handleChange(e, 'DESCRIPTION')} />
         </label>
 
         <label>
-          Time:
-          <TimeField
-            value={time}
-            onChange={(value) => this.handleChange(value, 'TIME')}
-          />
+          <p className="add-food__label">Time</p>
+          <div className="add-food__input--time">
+            <TimeField
+              value={time}
+              onChange={(value) => this.handleChange(value, 'TIME')}
+            />
+          </div>
         </label>
 
-        <button>Submit</button>
+        <PrimaryButton 
+          disabled={isStringEmpty(description)}
+          onClick={() => {}}
+          text="Submit"
+        />
       </form>
     )
   }

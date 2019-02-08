@@ -12,10 +12,10 @@ export default class CalendarItem extends Component {
     const editPath = `/food/edit/${typeIndex}/${dayIndex}`;
 
     return (
-      <div>
+      <div className="calendar-item__container">
         {done ?
           <div className="calendar-item__wrapper">
-            <p className="calendar-item__title"><strong>Done!</strong></p>
+            <p className="calendar-item__title">Done!</p>
             <button
               onClick={(e) => handleDoneClick(e, dayIndex, typeIndex)}
               className="calendar-item__button">
@@ -24,9 +24,9 @@ export default class CalendarItem extends Component {
           </div>
           :
           <div className="calendar-item__wrapper">
-            <p className="calendar-item__title"><strong>{title}</strong></p>
-            <p className="calendar-item__description">{description}</p>
-            <p className="calendar-item__time">At {time}</p>
+            <p className="calendar-item__title">{title}</p>
+            <p className="calendar-item__description">You'll be eating: {description}</p>
+            <p className="calendar-item__time">At <strong>{time}</strong></p>
             <button
               onClick={(e) => handleDoneClick(e, dayIndex, typeIndex)}
               className="calendar-item__button">

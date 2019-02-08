@@ -4,6 +4,7 @@ import TimeField from 'react-simple-timefield';
 
 import './Water.scss';
 import { createWaterEvent } from '../../utils/api-calendar-lib';
+import PrimaryButton from '../primary-button/PrimaryButton';
 
 export default class Water extends Component {
 
@@ -53,26 +54,37 @@ export default class Water extends Component {
         <h1 className="water__heading">Water</h1>
 
         <div className="water__container">
-          {water.cupsDrank.map((cupDrank, index) => (
-            <button
-              className="water__cup"
-              onClick={(e) => handleCupClick(e, index)}>
-              {cupDrank ?
-                <img className="water__icon" src={require('../../assets/check.svg')} alt="Water Drank" /> :
-                <img className="water__icon" src={require('../../assets/water-bottle.svg')} alt="Water Bottle" />}
-            </button>
-          ))}
+          <div className="water__cups">
+            {water.cupsDrank.map((cupDrank, index) => (
+              <div className="water__cup">
+                <button
+                  className="water__cup-button"
+                  onClick={(e) => handleCupClick(e, index)}>
+                  {cupDrank ?
+                    <img className="water__cup-icon" src={require('../../assets/water-bottle-drank.png')} alt="Water Drank" /> :
+                    <img className="water__cup-icon" src={require('../../assets/water-bottle-full.png')} alt="Water Bottle" />}
+                </button>
+                <p className="water__cup-caption">Bottle #{index + 1}</p>
+              </div>
+            ))}
+          </div>
 
-          <form onSubmit={(e) => this.handleSubmit(e)}>
-            <label>
+          <form className="water__reminder-form" onSubmit={(e) => this.handleSubmit(e)}>
+            <label className="water__reminder-label">
               Remind me to drink water at:
-              <TimeField
-                value={time}
-                onChange={(value) => this.handleTimeChange(value)}
-              />
+              <div className="water__reminder-input--time">
+                <TimeField
+                  value={time}
+                  onChange={(value) => this.handleTimeChange(value)}
+                />
+              </div>
             </label>
 
-            <button>Set an Alarm</button>
+            <PrimaryButton
+              disabled={false}
+              onClick={() => { }}
+              text="Set an Alarm!"
+            />
           </form>
 
           <p>{message}</p>

@@ -13,12 +13,80 @@
   &__heading {
     @include heading;
     @include heading-primary;
+    margin-bottom: 4rem;
+  }
+
+  &__cups {
+    @include flex-center;
+    flex-wrap: wrap;
   }
   
-  &__cup, &__icon {
+  &__cup {
+    flex-basis: 20%;
+
+    @media only screen and (max-width: $bp-lg) {
+      flex-basis: 33.333%;
+      margin-bottom: 2rem;
+    }
+  } 
+
+  &__cup-button {
+    border-bottom: 8px solid transparent;
+    transition: border .5s ease;
+    width: 100%;
+    outline: none;
+    margin-bottom: 0.8rem;
+  }
+  
+  &__cup-button:hover {
+    border-bottom: 8px solid $color-secondary;
+  }
+
+  &__cup-icon {
     width: 12rem;
     padding: 0;
     outline: none;
+    cursor: pointer;
+  }
+
+  &__cup-caption {
+    text-align: center;
+    font-size: 2rem;
+    color: $color-secondary;
+    font-weight: 300;
+  }
+
+  &__reminder-form {
+    @include flex-center;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  &__reminder-label {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 0.6rem;
+    @include flex-center;
+
+    @media only screen and (max-width: $bp-sm) {
+      flex-direction: column;
+    }
+  }
+
+  &__reminder-input--time > input {
+    padding: 0.3rem 1rem;
+    font-family: $default-font-family;
+    font-size: 1rem;
+    border: 1px solid $color-primary;
+    font-size: 1.2rem;
+    width: 6rem !important;
+    text-align: center;
+    margin-left: 1rem;
+
+    @media only screen and (max-width: $bp-sm) {
+      margin-top: 1rem;
+      margin-left: 0;
+    }
   }
 
 }
